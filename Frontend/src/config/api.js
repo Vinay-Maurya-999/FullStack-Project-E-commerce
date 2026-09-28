@@ -8,7 +8,7 @@ export default function useApi() {
   const api = useMemo(
     () =>
       axios.create({
-        baseURL: https://fullstack-project-e-commerce-backend-hlhi.onrender.com/ || "/api",
+        baseURL: "https://fullstack-project-e-commerce-backend-hlhi.onrender.com/" || "/api",
         withCredentials: true,
       }),
     [],
