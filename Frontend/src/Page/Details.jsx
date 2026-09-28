@@ -17,7 +17,7 @@ export default function ProductDetail() {
     try {
       setLoading(true);
 
-      const res = await api.get(`/products/${id}`);
+      const res = await api.get(`/api/products/${id}`);
 
       console.log(res);
 
