@@ -1,18 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContextValue";
-import useApi from "../config/api";
+
+
+
+const baseApi = axios.create({
+  baseURL: "https://fullstack-project-e-commerce-backend-hlhi.onrender.com/",
+  withCredentials: true,
+});
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [accessToken, setAccessToken] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
-const api = useApi();
+
   useEffect(() => {
     let active = true;
   
 
-    api
+     baseApi
       .post(`/auth/refresh-token`, {}, { withCredentials: true })
       .then((response) => {
         if (!active) return;
