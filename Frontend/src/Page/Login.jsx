@@ -23,7 +23,7 @@ export default function LoginForm() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await api.post("/auth/login", {
+      const res = await api.post("/api/auth/login", {
         email: data.email,
         password: data.password,
       });
