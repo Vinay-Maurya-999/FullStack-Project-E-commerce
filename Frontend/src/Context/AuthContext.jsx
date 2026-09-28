@@ -9,7 +9,7 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     let active = true;
-    const apiBase = (https://fullstack-project-e-commerce-backend-hlhi.onrender.com/ || "/api");
+    const apiBase = https://fullstack-project-e-commerce-backend-hlhi.onrender.com/;
 
     axios
       .post(`${apiBase}/auth/refresh-token`, {}, { withCredentials: true })
