@@ -12,8 +12,8 @@ const api = useApi();
     let active = true;
   
 
-    axios
-      .post(`${api}/auth/refresh-token`, {}, { withCredentials: true })
+    api
+      .post(`/auth/refresh-token`, {}, { withCredentials: true })
       .then((response) => {
         if (!active) return;
         setAccessToken(response.data.data.AccessToken);
