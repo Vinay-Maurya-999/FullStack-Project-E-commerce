@@ -103,7 +103,7 @@ export function ProductList() {
   const { product, setProduct } = useShopContext();
   const Productfetch = async () => {
     try {
-      const res = await api.get("/products");
+      const res = await api.get("/api/products");
 
       setProduct(res.data.data.products);
     } catch (error) {
