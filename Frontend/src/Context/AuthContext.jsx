@@ -19,7 +19,7 @@ export default function AuthProvider({ children }) {
   
 
      baseApi
-      .post(`/auth/refresh-token`, {}, { withCredentials: true })
+      .post(`/api/auth/refresh-token`, {}, { withCredentials: true })
       .then((response) => {
         if (!active) return;
         setAccessToken(response.data.data.AccessToken);
