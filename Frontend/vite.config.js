@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:6000",
+        target: "https://fullstack-project-e-commerce-backend-hlhi.onrender.com/",
         changeOrigin: true,
       },
     },
