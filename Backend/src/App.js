@@ -7,7 +7,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://fullstack-project-e-commerce-frontend.onrender.com/",
+  "https://fullstack-project-e-commerce-frontend.onrender.com",
 ];
 
 app.use(
@@ -22,7 +22,7 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 app.use(express.json());

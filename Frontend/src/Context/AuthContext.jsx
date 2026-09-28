@@ -2,10 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContextValue";
 
-
-
 const baseApi = axios.create({
-  baseURL: "https://fullstack-project-e-commerce-backend-hlhi.onrender.com/",
+  baseURL: "https://fullstack-project-e-commerce-backend-hlhi.onrender.com",
   withCredentials: true,
 });
 
@@ -16,9 +14,8 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     let active = true;
-  
 
-     baseApi
+    baseApi
       .post(`/api/auth/refresh-token`, {}, { withCredentials: true })
       .then((response) => {
         if (!active) return;
