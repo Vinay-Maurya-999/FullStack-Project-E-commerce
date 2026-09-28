@@ -10,7 +10,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://fullstack-project-e-commerce-backend-hlhi.onrender.com/",
+      "https://fullstack-project-e-commerce-frontend.onrender.com",
     ],
     credentials: true,
   })
