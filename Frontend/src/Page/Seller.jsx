@@ -20,7 +20,7 @@ export default function CreateProduct() {
 
   const Productfetch = async () => {
     try {
-      const res = await api.get("/products");
+      const res = await api.get("/api/products");
       setProduct(res.data?.data?.products || []);
     } catch (error) {
       console.log("Product fetch error:", error);
