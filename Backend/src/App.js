@@ -5,16 +5,26 @@ import cors from "cors";
 import productRoutes from "./Routes/Product.routes.js";
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fullstack-project-e-commerce-frontend.onrender.com/",
+];
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://fullstack-project-e-commerce-frontend.onrender.com",
-    ],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS blocked: ${origin}`));
+      }
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 app.use(express.json());
 app.use(cookieParser());
 
