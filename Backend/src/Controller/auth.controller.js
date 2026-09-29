@@ -159,6 +159,7 @@ export const me = async (req, res) => {
         email: user.email,
         name: user.name,
         id: user._id,
+        role:user.role
       },
     },
   });
