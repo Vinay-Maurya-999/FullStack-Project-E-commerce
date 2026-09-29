@@ -2,6 +2,13 @@ import UserModel from "../Models/auth.model.js";
 import bcrypt from "bcryptjs";
 import { GenerateToken, readRefreshtoken } from "../Utils/auth.utils.js";
 
+const refreshCookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  path: "/",
+};
+
 /**
  *@apitake -> { name, email, password, confirmPassword }
  *@api POST -> /api/auth/register
@@ -52,7 +59,8 @@ export async function Register(req, res) {
     });
 
     res.cookie("refreshToken", RefreshToken, {
-      httpOnly: true,
+      ...refreshCookieOptions,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     await UserModel.findByIdAndUpdate(user._id, {
@@ -111,7 +119,8 @@ export const login = async (req, res) => {
   });
 
   res.cookie("refreshToken", RefreshToken, {
-    httpOnly: true,
+    ...refreshCookieOptions,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
   await UserModel.findByIdAndUpdate(user._id, {
@@ -190,7 +199,8 @@ export const refresh = async (req, res) => {
     });
 
     res.cookie("refreshToken", RefreshToken, {
-      httpOnly: true,
+      ...refreshCookieOptions,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     await UserModel.findByIdAndUpdate(user._id, {
@@ -230,7 +240,7 @@ export const logout = async (req, res) => {
       refreshToken: null,
     });
 
-    res.clearCookie("refreshToken");
+    res.clearCookie("refreshToken", refreshCookieOptions);
 
     return res.status(200).json({
       message: "User logged out successfully",
