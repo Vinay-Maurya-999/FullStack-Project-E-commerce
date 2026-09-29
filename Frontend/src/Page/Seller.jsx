@@ -57,7 +57,7 @@ export default function CreateProduct() {
     };
 
     try {
-      await api.put(`/products/${id}`, payload);
+      await api.put(`/api/products/${id}`, payload);
       setProduct((prev) =>
         prev.map((item) =>
           item._id === id
@@ -90,7 +90,7 @@ export default function CreateProduct() {
     }
 
     try {
-      await api.delete(`/products/${id}`);
+      await api.delete(`/api/products/${id}`);
       setProduct((prev) => prev.filter((item) => item._id !== id));
     } catch (error) {
       console.log("Delete product error:", error.response?.data || error);
