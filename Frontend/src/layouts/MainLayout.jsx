@@ -11,7 +11,7 @@ const mainlayout = () => {
   useEffect(() => {
     const getMe = async () => {
       try {
-        const res = await api.get("/auth/get-me");
+        const res = await api.get("/api/auth/get-me");
 
         setUser(res.data.data.user);
       } catch (error) {
