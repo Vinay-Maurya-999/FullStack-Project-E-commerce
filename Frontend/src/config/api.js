@@ -32,13 +32,13 @@ export default function useApi() {
           request &&
           !request._retry &&
           request.headers?.Authorization &&
-          !request.url?.includes("/auth/refresh-token");
+          !request.url?.includes("/api/auth/refresh-token");
 
         if (!canRefresh) return Promise.reject(error);
 
         request._retry = true;
         try {
-          const response = await api.post("/auth/refresh-token");
+          const response = await api.post("/api/auth/refresh-token");
           const { AccessToken, user } = response.data.data;
 
           setAccessToken(AccessToken);
