@@ -230,7 +230,7 @@ export default function CreateProduct() {
             <label className="mb-2 block text-sm font-medium">Description</label>
             <textarea
               rows="5"
-              placeholder="Product description..."
+              placeholder="Product description... min 20 to 50 words"
               {...register("description")}
               className="w-full resize-none rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 outline-none focus:border-lime-400"
             />
