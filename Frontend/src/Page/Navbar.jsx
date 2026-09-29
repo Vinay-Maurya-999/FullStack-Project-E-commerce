@@ -20,7 +20,7 @@ export default function Navbar() {
 
   const fullName = currentUser.fullName || currentUser.name || "";
 
-  const role = currentUser.role;
+  const role = currentUser.role || "user";
 
   const firstName = fullName.trim().split(" ")[0] || "User";
 
