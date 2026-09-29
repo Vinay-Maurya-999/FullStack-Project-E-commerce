@@ -20,7 +20,7 @@ export default function Navbar() {
 
   const fullName = currentUser.fullName || currentUser.name || "";
 
-  const role = currentUser.role || "user";
+  const role = currentUser.role;
 
   const firstName = fullName.trim().split(" ")[0] || "User";
 
@@ -39,7 +39,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     try {
       await api.post(
-        "/auth/logout",
+        "/api/auth/logout",
         {},
         {
           withCredentials: true,
