@@ -178,7 +178,7 @@ export default function CreateProduct() {
         formData.append(`sizes[${index}][stock]`, item.stock);
       });
 
-      const response = await api.post("/products", formData);
+      const response = await api.post("/api/products", formData);
       reset();
       await Productfetch();
       console.log("Product created:", response.data);
